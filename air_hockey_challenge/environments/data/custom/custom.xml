@@ -1,0 +1,10 @@
+<mujoco model="AirHockeySingle">
+    <include file="../table.xml"/>
+    <include file="stepper.xml"/>
+
+    <contact>
+    
+          
+    </contact>
+
+</mujoco>

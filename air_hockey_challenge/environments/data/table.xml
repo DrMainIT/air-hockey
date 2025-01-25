@@ -34,9 +34,6 @@
                       solref="0.0125 0.5" solimp="0.9 0.999 0.001 0.5 2"/>
             </body>
             <body name="rim">
-<!--                <geom name="rim_home_l" class="rim" size="0.045 0.197 0.005" pos="-1.019 0.322 0.005"/>-->
-<!--                <geom name="rim_home_r" class="rim" size="0.045 0.197 0.005" pos="-1.019 -0.322 0.005"/>-->
-
                 <geom name="rim_home_l" class="rim" type="mesh" mesh="rim" pos="1.019 0.322 0."/>
                 <geom name="rim_home_r" class="rim" type="mesh" mesh="rim" pos="1.019 -0.322 0." quat="0 0 0 1"/>
 
@@ -45,10 +42,6 @@
 
                 <geom name="rim_left" class="rim" size="1.064 0.045 0.015" pos="0 0.564 0.015"/>
                 <geom name="rim_right" class="rim" size="1.064 0.045 0.015" pos="0 -0.564 0.015"/>
-
-<!--                <geom name="rim_away_l" class="rim" size="0.045 0.197 0.005" pos="1.019 0.322 0.005"/>-->
-<!--                <geom name="rim_away_r" class="rim" size="0.045 0.197 0.005" pos="1.019 -0.322 0.005"/>-->
-
                 <geom name="rim_away_l" class="rim" type="mesh" mesh="rim" pos="-1.019 0.322 0."/>
                 <geom name="rim_away_r" class="rim" type="mesh" mesh="rim" pos="-1.019 -0.322 0." quat="0 0 0 1"/>
                 <geom name="rim_away_top" class="rim" size="0.045 0.519 0.01" pos="1.019 0 0.02"

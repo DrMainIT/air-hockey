@@ -284,7 +284,7 @@ class HittingAgent(AgentBase):
 def main():
     from air_hockey_challenge.framework.air_hockey_challenge_wrapper import AirHockeyChallengeWrapper
     plot_trajectory = False
-    env = AirHockeyChallengeWrapper(env="7dof-hit", interpolation_order=3, debug=plot_trajectory)
+    env = AirHockeyChallengeWrapper(env="3dof-hit", interpolation_order=3, debug=plot_trajectory)
 
     agent = HittingAgent(env.base_env.env_info)
 

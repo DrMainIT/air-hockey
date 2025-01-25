@@ -31,12 +31,13 @@ class AirHockeyChallengeWrapper(Environment):
             "7dof-prepare": position.IiwaPositionPrepare,
 
             "3dof-hit": position.PlanarPositionHit,
-            "3dof-defend": position.PlanarPositionDefend
+            "3dof-defend": position.PlanarPositionDefend,
+            "custom": position.PlanarPositionHit,
         }
 
         if env == "tournament" and type(interpolation_order) != tuple:
             interpolation_order = (interpolation_order, interpolation_order)
-
+        
         self.base_env = env_dict[env](interpolation_order=interpolation_order, **kwargs)
         self.env_name = env
         self.env_info = self.base_env.env_info
@@ -112,7 +113,8 @@ class AirHockeyChallengeWrapper(Environment):
 
 
 if __name__ == "__main__":
-    env = AirHockeyChallengeWrapper(env="7dof-hit")
+    #env = AirHockeyChallengeWrapper(env="3dof-hit")
+    env = AirHockeyChallengeWrapper(env="custom")
     env.reset()
 
     R = 0.

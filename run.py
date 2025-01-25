@@ -60,7 +60,7 @@ def get_args():
     arg_test = parser.add_argument_group('override parameters')
 
     env_choices = ["3dof-hit", "3dof-defend", "7dof-hit", "7dof-defend", "7dof-prepare", "3dof", "7dof", "tournament",
-                   "tournament_server"]
+                   "tournament_server","custom"]
 
     arg_test.add_argument("-e", "--env", nargs='*',
                           choices=env_choices,

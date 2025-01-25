@@ -1,3 +1,9 @@
+import numpy as np
+
+from air_hockey_challenge.framework import AgentBase
+
+
+
 def build_agent(env_info, **kwargs):
     """
     Function where an Agent that controls the environments should be returned.
