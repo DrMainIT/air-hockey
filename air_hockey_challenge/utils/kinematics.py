@@ -138,12 +138,20 @@ def link_to_xml_name(mj_model, link):
             "ee": "iiwa_1/striker_joint_link",
         }
     except:
-        link_to_frame_idx = {
-            "1": "planar_robot_1/body_1",
-            "2": "planar_robot_1/body_2",
-            "3": "planar_robot_1/body_3",
-            "ee": "planar_robot_1/body_ee",
-        }
+        try: 
+            mj_model.body('planar_robot_1/body_1')
+            link_to_frame_idx = {
+                "1": "planar_robot_1/body_1",
+                "2": "planar_robot_1/body_2",
+                "3": "planar_robot_1/body_3",
+                "ee": "planar_robot_1/body_ee",
+            }
+        except:
+            link_to_frame_idx = {
+                "1": "custom_robot_1/body_1",
+                "2": "custom_robot_1/body_2",
+                "ee": "custom_robot_1/body_ee",
+            }
     return link_to_frame_idx[link]
 
 

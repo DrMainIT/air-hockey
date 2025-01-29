@@ -32,7 +32,7 @@ class AirHockeyChallengeWrapper(Environment):
 
             "3dof-hit": position.PlanarPositionHit,
             "3dof-defend": position.PlanarPositionDefend,
-            "custom": position.PlanarPositionHit,
+            "custom": position.CustomPositionHit,
         }
 
         if env == "tournament" and type(interpolation_order) != tuple:

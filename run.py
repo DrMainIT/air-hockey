@@ -121,11 +121,11 @@ if __name__ == "__main__":
     elif filtered_args["example"] == "atacom":
         from examples.rl.agent_loader import build_agent
     del filtered_args["example"]
-
     # Update config with command line args
     config.update(filtered_args)
     config["env_list"] = convert_envs(config["env"])
     del config["env"]
+    config["value"] = 0.5
 
     if "tournament" in config["env_list"]:
         run_tournament(build_agent, **config)

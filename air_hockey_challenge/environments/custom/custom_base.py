@@ -71,11 +71,11 @@ class AirHockeyBase(MuJoCo):
         self.env_info['robot'] = {
             "n_joints": 2,
             "ee_desired_height": 0.3,
-            "joint_vel_limit": np.array([[-np.pi / 2, -np.pi / 2, -np.pi * 2 / 3],
-                                         [np.pi / 2, np.pi / 2, np.pi * 2 / 3]]),
+            "joint_vel_limit": np.array([[-np.pi / 2, -np.pi / 2],
+                                         [np.pi / 2, np.pi / 2]]),
 
-            "joint_acc_limit": np.array([[-2 * np.pi, -2 * np.pi, -2 * 4 / 3 * np.pi],
-                                         [2 * np.pi, 2 * np.pi, 2 * 4 / 3 * np.pi]]),
+            "joint_acc_limit": np.array([[-2 * np.pi, -2 * np.pi],
+                                         [2 * np.pi, 2 * np.pi]]),
             "base_frame": [],
             "control_frequency": 50,
         }
@@ -86,8 +86,8 @@ class AirHockeyBase(MuJoCo):
         self.env_info['joint_vel_ids'] = [8, 9]
         
         self.env_info['opponent_ee_ids'] = []
-
-        max_joint_vel = ([np.inf] * 2 + list(self.env_info["robot"]["joint_vel_limit"][1, :3])) * self.n_agents
+        
+        max_joint_vel = ([np.inf] * 3 + list(self.env_info["robot"]["joint_vel_limit"][1, :2])) * self.n_agents
 
         super().__init__(scene, action_spec, observation_spec, gamma, horizon, timestep, n_substeps,
                          n_intermediate_steps, additional_data, collision_spec, max_joint_vel, **viewer_params)

@@ -37,8 +37,8 @@
     </worldbody>
 
     <actuator>
-        <motor name="custom_robot_1/joint_1" joint="custom_robot_1/joint_1" ctrlrange="-100 100"/>
-        <motor name="custom_robot_1/joint_2" joint="custom_robot_1/joint_2" ctrlrange="-100 100"/>
+        <motor name="custom_robot_1/joint_1" joint="custom_robot_1/joint_1" ctrlrange="-1 1"/>
+        <motor name="custom_robot_1/joint_2" joint="custom_robot_1/joint_2" ctrlrange="-1 1"/>
         <!-- <motor ctrllimited="true" ctrlrange="-1 1" gear="100" joint="slider2" name="slide2"/> -->
     </actuator>
 </mujoco>

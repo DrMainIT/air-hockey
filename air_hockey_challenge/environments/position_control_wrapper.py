@@ -6,6 +6,7 @@ import scipy
 
 from air_hockey_challenge.environments import iiwas as iiwas
 from air_hockey_challenge.environments import planar as planar
+from air_hockey_challenge.environments import custom as custom
 from air_hockey_challenge.utils import inverse_kinematics
 
 
@@ -75,7 +76,6 @@ class PositionControl:
 
         joint_pos_lim = np.tile(self.env_info['robot']['joint_pos_limit'], (1, self.n_agents))
         joint_vel_lim = np.tile(self.env_info['robot']['joint_vel_limit'], (1, self.n_agents))
-
         min_vel = np.minimum(np.maximum(-k * (pos - joint_pos_lim[0]), joint_vel_lim[0]), joint_vel_lim[1])
 
         max_vel = np.minimum(np.maximum(-k * (pos - joint_pos_lim[1]), joint_vel_lim[0]), joint_vel_lim[1])
@@ -250,6 +250,15 @@ class PositionControlPlanar(PositionControl):
         i_gain = [0, 0, 0]
         super(PositionControlPlanar, self).__init__(p_gain=p_gain, d_gain=d_gain, i_gain=i_gain, *args, **kwargs)
 
+class PositionControlCustom(PositionControl):
+    def __init__(self, *args, **kwargs):
+        p_gain = [960, 480]
+        d_gain = [60, 20]
+        i_gain = [0, 0]
+        super(PositionControlCustom, self).__init__(p_gain=p_gain, d_gain=d_gain, i_gain=i_gain, *args, **kwargs)
+
+class CustomPositionHit(PositionControlCustom, custom.AirHockeyHit):
+    pass
 
 class PlanarPositionHit(PositionControlPlanar, planar.AirHockeyHit):
     pass
