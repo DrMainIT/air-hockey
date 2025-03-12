@@ -21,6 +21,8 @@ Args:
             solution or "sac" for an end-to-end trained solution with SAC.
 
 Examples:
+    custom example:
+        python run.py -e custom --n_cores 1 --n_episodes 5
     To view the baseline Agent on the 3dof-hit environment:
     python run.py --example baseline -e 3dof-hit -n 1 -r
 

@@ -7,7 +7,7 @@ from scipy.interpolate import CubicSpline
 from air_hockey_challenge.framework.agent_base import AgentBase
 from air_hockey_challenge.utils import inverse_kinematics, world_to_robot
 from baseline.baseline_agent import BezierPlanner, TrajectoryOptimizer, PuckTracker
-
+from icecream import ic
 
 def build_agent(env_info, **kwargs):
     """
@@ -43,6 +43,7 @@ class HittingAgent(AgentBase):
 
         self.dt = 1 / self.env_info['robot']['control_frequency']
         self.ee_height = self.env_info['robot']["ee_desired_height"]
+        ic(self.env_info['robot']["ee_desired_height"])
 
         self.bound_points = np.array([[-(self.env_info['table']['length'] / 2 - 0.05),
                                        -(self.env_info['table']['width'] / 2 - 0.05)],
@@ -61,9 +62,12 @@ class HittingAgent(AgentBase):
         self.optimizer = TrajectoryOptimizer(self.env_info)
 
         self.puck_tracker = PuckTracker(self.env_info, agent_id)
+        
 
         if self.env_info['robot']['n_joints'] == 3:
             self.joint_anchor_pos = np.array([-1.15570723, 1.30024401, 1.44280414])
+        elif self.env_info['robot']['n_joints'] == 2:
+            self.joint_anchor_pos = np.array([-1.15570723, 1.30024401])
         else:
             self.joint_anchor_pos = np.array([6.28479822e-11, 7.13520517e-01, -2.96302903e-11, -5.02477487e-01,
                                               -7.67250279e-11, 1.92566224e+00, -2.34645597e-11])
@@ -284,7 +288,7 @@ class HittingAgent(AgentBase):
 def main():
     from air_hockey_challenge.framework.air_hockey_challenge_wrapper import AirHockeyChallengeWrapper
     plot_trajectory = False
-    env = AirHockeyChallengeWrapper(env="3dof-hit", interpolation_order=3, debug=plot_trajectory)
+    env = AirHockeyChallengeWrapper(env="custom", interpolation_order=-1, debug=plot_trajectory)
 
     agent = HittingAgent(env.base_env.env_info)
 
